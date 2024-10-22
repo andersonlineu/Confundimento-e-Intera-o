@@ -2336,10 +2336,9 @@ R<sup>2</sup> Tjur
 </tr>
 </table>
 </div>
-</div>
-<div id="cálculo-do-or-de-mantel-haenszel" class="section level1" number="7">
-<h1><span class="header-section-number">7</span> Cálculo do OR de
-Mantel-Haenszel</h1>
+<div id="cálculo-do-or-de-mantel-haenszel" class="section level3" number="6.0.4">
+<h3><span class="header-section-number">6.0.4</span> Cálculo do OR de
+Mantel-Haenszel</h3>
 <pre class="r"><code># Efeito a inatividade sobre a autopercepção de saúde controlada pelo sexo
 mantelhaen.test(vigitelSL$inativo, vigitelSL$saruim, vigitelSL$sexo)</code></pre>
 <pre><code>## 
@@ -2354,9 +2353,9 @@ mantelhaen.test(vigitelSL$inativo, vigitelSL$saruim, vigitelSL$sexo)</code></pre
 ## common odds ratio 
 ##          2.226629</code></pre>
 </div>
-<div id="cálculo-do-or-de-cada-estrato-e-pelo-test-de-mantel-haenszel" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Cálculo do OR de cada
-estrato e pelo test de Mantel-Haenszel</h1>
+<div id="cálculo-do-or-de-cada-estrato-e-pelo-test-de-mantel-haenszel" class="section level3" number="6.0.5">
+<h3><span class="header-section-number">6.0.5</span> Cálculo do OR de
+cada estrato e pelo test de Mantel-Haenszel</h3>
 <pre class="r"><code>library(epiDisplay)
 # Efeito a inatividade sobre a autopercepção de saúde controlada pelo sexo
 with(vigitelSL, mhor(inativo, saruim, sexo, graph = F))</code></pre>
@@ -2370,8 +2369,26 @@ with(vigitelSL, mhor(inativo, saruim, sexo, graph = F))</code></pre>
 ## M-H Chi2(1) = 13.25 , P value = 0 
 ## Homogeneity test, chi-squared 1 d.f. = 4.8 , P value = 0.029</code></pre>
 </div>
-<div id="regressão-logística-com-pesos" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> Regressão Logística com
+<div id="cálculo-do-or-de-cada-estrato-e-pelo-test-de-mantel-haenszel-1" class="section level3" number="6.0.6">
+<h3><span class="header-section-number">6.0.6</span> Cálculo do OR de
+cada estrato e pelo test de Mantel-Haenszel</h3>
+<pre class="r"><code>library(epiDisplay)
+# Efeito a inatividade sobre a autopercepção de saúde controlada pelo escolaridade
+with(vigitelSL, mhor(inativo, saruim, fesc, graph = F))</code></pre>
+<pre><code>## 
+## Stratified analysis by  fesc 
+##                        OR lower lim. upper lim. P value
+## fesc 0 a 8 anos      1.82      0.862       3.83 0.09811
+## fesc 9 a 11 anos     1.32      0.483       3.13 0.48566
+## fesc 12 anos e mais  4.26      1.345      12.73 0.00669
+## M-H combined         1.93      1.216       3.06 0.00452
+## 
+## M-H Chi2(1) = 8.06 , P value = 0.005 
+## Homogeneity test, chi-squared 2 d.f. = 3.28 , P value = 0.194</code></pre>
+</div>
+</div>
+<div id="regressão-logística-com-pesos" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Regressão Logística com
 Pesos</h1>
 <p>Quando os dados são resumidos (ou seja, agrupados por frequência),
 podemos ajustar um modelo logístico ponderado usando a função
@@ -2478,8 +2495,8 @@ R<sup>2</sup> Tjur
 ajustar corretamente um modelo com dados resumidos, utilizando as
 frequências para representar o número de observações em cada grupo.</p>
 </div>
-<div id="conclusão" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> Conclusão</h1>
+<div id="conclusão" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Conclusão</h1>
 <p>Este tutorial demonstrou como ajustar modelos de regressão logística
 em R para avaliar <strong>confundimento</strong> e
 <strong>interação</strong>. Além disso, mostramos como utilizar pesos
