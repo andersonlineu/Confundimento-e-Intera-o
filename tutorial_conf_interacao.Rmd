@@ -145,6 +145,23 @@ modsexo2 <- glm(saruim ~ inativo, family = binomial(logit), data = vigitelSL2)
 tab_model(modsexo1, modsexo2)
 ```
 
+# Cálculo do OR de Mantel-Haenszel
+
+```{r}
+# Efeito a inatividade sobre a autopercepção de saúde controlada pelo sexo
+mantelhaen.test(vigitelSL$inativo, vigitelSL$saruim, vigitelSL$sexo)
+
+```
+
+# Cálculo do OR de cada estrato e pelo test de Mantel-Haenszel
+
+```{r, warning=FALSE, message=FALSE}
+library(epiDisplay)
+# Efeito a inatividade sobre a autopercepção de saúde controlada pelo sexo
+with(vigitelSL, mhor(inativo, saruim, sexo, graph = F))
+
+```
+
 # Regressão Logística com Pesos
 
 Quando os dados são resumidos (ou seja, agrupados por frequência), podemos ajustar um modelo logístico ponderado usando a função `weights`.
