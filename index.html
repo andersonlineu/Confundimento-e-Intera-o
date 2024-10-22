@@ -1492,7 +1492,7 @@ R</h1>
 <p>Neste tutorial, exploraremos como lidar com
 <strong>confundimento</strong> e <strong>interação</strong> em análises
 epidemiológicas usando <strong>R</strong>. Vamos trabalhar com um banco
-de dados fictício, mas as técnicas apresentadas são aplicáveis a
+de dados do VIGITEL, mas as técnicas apresentadas são aplicáveis a
 qualquer análise de regressão logística.</p>
 <p>Para ilustrar o uso de variáveis de confundimento e interação,
 usaremos o banco de dados <code>VIGITEL</code>, onde o desfecho de
@@ -1505,11 +1505,7 @@ de saúde ruim), e a exposição de interesse será
 Dados</h1>
 <p>Vamos começar carregando o banco de dados e preparando as
 variáveis.</p>
-<pre class="r"><code># Pacotes necessários
-library(tableone)
-library(sjPlot)
-
-# Importando o banco de dados VIGITEL:
+<pre class="r"><code># Importando o banco de dados VIGITEL:
 vigitelSL &lt;- read.csv2(&quot;Vigitel2019_SaoLuis.csv&quot;)
 
 # Renomeando as variáveis e transformando-as em fatores
@@ -1542,7 +1538,10 @@ table(vigitelSL$saruim)</code></pre>
 <p>A <strong>Tabela 1</strong> é uma tabela descritiva comum em estudos
 epidemiológicos. Ela apresenta as distribuições de variáveis de
 interesse, estratificadas pelo desfecho.</p>
-<pre class="r"><code># Função para criar a Tabela 1
+<pre class="r"><code># Pacotes necessários
+library(tableone)
+
+# Função para criar a Tabela 1
 criar_tabela &lt;- function(data, ..., estratificacao) {
   variaveis &lt;- c(...)
   tabela &lt;- CreateTableOne(data = data, vars = variaveis, strata = estratificacao)
@@ -1591,8 +1590,11 @@ summary(modbruto)</code></pre>
 ## AIC: 755.42
 ## 
 ## Number of Fisher Scoring iterations: 6</code></pre>
-<pre class="r"><code># Calculando as ORs e IC 95%
-tab_model(modbruto)</code></pre>
+<pre class="r"><code># Pacotes necessários
+library(sjPlot)
+
+# Calculando as ORs e IC 95%
+tab_model(modbruto) # criar uma tabela a partir de modelos de regressão com saída em HTML (faz parte da biblioteca sjPlot)</code></pre>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
